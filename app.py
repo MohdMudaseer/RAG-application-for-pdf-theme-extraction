@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import os
 from backend.extractor import extract_text_from_pdf
 from backend.chunker import chunk_text
@@ -44,14 +45,15 @@ if st.session_state.chatbot:
     query = st.text_input("💬 Ask a question across documents")
     if query:
         with st.spinner("Thinking..."):
-            response = st.session_state.chatbot({"question": query})
-            for msg in response["chat_history"]:
-                role = "🧑‍💻 You" if msg.type == "human" else "🤖 Bot"
-                st.markdown(f"**{role}:** {msg.content}")
+            from backend.qa_engine import get_cited_response
+            cited_answers = get_cited_response(st.session_state.chatbot, query)
+            st.subheader("📑 Cited Responses")
+            df = pd.DataFrame(cited_answers, columns=["Document ID", "Extracted Answer", "Citation"])
+            st.dataframe(df)
 
     if st.button("🔍 Identify Themes Across Documents"):
         with st.spinner("Analyzing themes..."):
             combined_text = "\n".join(st.session_state.doc_texts.values())
-            themes = identify_themes_across_docs(combined_text)
+            theme_result = identify_themes_across_docs(combined_text)
             st.subheader("🧠 Identified Themes")
-            st.markdown(themes)
+            st.markdown(theme_result)
