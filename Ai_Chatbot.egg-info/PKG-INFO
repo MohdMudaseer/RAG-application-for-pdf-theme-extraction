@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: Ai-Chatbot
+Version: 0.0.1
+Author: Mohd Mudaseer Mazharuddin
+Author-email: mudaseer2753@gmail.com
+Requires-Dist: huggingface-hub
+Requires-Dist: transformers
+Requires-Dist: pypdf2
+Requires-Dist: langchain
+Requires-Dist: streamlit
+Requires-Dist: python-dotenv
+Requires-Dist: pytesseract
+Requires-Dist: pdf2image
+Requires-Dist: pillow
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist

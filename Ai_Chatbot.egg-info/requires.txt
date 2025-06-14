@@ -1,0 +1,9 @@
+huggingface-hub
+transformers
+pypdf2
+langchain
+streamlit
+python-dotenv
+pytesseract
+pdf2image
+pillow

@@ -1,0 +1,14 @@
+huggingface-hub
+transformers
+pypdf2
+langchain
+langchain-community
+langchain-groq
+streamlit
+python-dotenv
+pytesseract 
+pdf2image 
+pillow
+chromadb  
+sentence-transformers
+#-e .
